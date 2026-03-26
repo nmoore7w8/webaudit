@@ -71,7 +71,7 @@ HEADERS_TO_CHECK = {
     "Content-Security-Policy": "CSP not set",
     "X-XSS-Protection": "Legacy XSS filter not set",
     "Referrer-Policy": "Referrer policy not set",
-]
+}
 
 findings = []
 lock_obj = __import__("threading").Lock()
