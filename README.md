@@ -40,25 +40,42 @@ python webaudit.py https://example.com --params "q,redirect"
 ## Example Output
 
 ```
+ __        __   _        _             _ _ _
+ \ \      / /__| |__    / \  _   _  __| (_) |_
+  \ \ /\ / / _ \ '_ \  / _ \| | | |/ _` | | __|
+   \ V  V /  __/ |_) |/ ___ \ |_| | (_| | | |_
+    \_/\_/ \___|_.__//_/   \_\__,_|\__,_|_|\__|
+
+  Web Vulnerability Scanner  |  github.com
+
   Target  : http://testphp.vulnweb.com
+  Started : 2026-03-26 11:34:15
+------------------------------------------------------------
+  [~] [MEDIUM] TLS: Site uses plain HTTP — no TLS encryption
 
   [*] Checking security headers...
   [i] [LOW]    Missing Header: X-Frame-Options — Clickjacking protection missing
   [i] [LOW]    Missing Header: Content-Security-Policy — CSP not set
+  [i] [LOW]    Missing Header: Strict-Transport-Security — HSTS not set
 
   [*] Probing for sensitive files/directories...
+  [!] [HIGH]   Sensitive File: 200 /.git/config
   [!] [HIGH]   Sensitive File: 200 /admin
 
-  [*] Testing parameters: ['id', 'search']
-  [!] [HIGH]   SQLi: Possible SQL injection in param 'id' (error: sql syntax)
-  [!] [HIGH]   XSS: Reflected XSS in param 'search'
+  [*] Testing parameters: ['id', 'searchFor', 'cat']
+  [!] [HIGH]   SQLi: Possible SQL injection in param 'cat' (error: sql syntax)
+  [!] [HIGH]   XSS: Reflected XSS in param 'searchFor'
 
+============================================================
   SCAN COMPLETE
-  HIGH    : 2
-  MEDIUM  : 0
+  HIGH    : 3
+  MEDIUM  : 1
   LOW     : 3
-  TOTAL   : 5
+  TOTAL   : 7
+============================================================
 ```
+
+> Tested against [testphp.vulnweb.com](http://testphp.vulnweb.com) — a intentionally vulnerable web app provided by Acunetix for legal security testing.
 
 ## Tested Against
 
