@@ -1,5 +1,7 @@
 # WebAudit
 
+![demo](demo.png)
+
 A web application vulnerability scanner that detects XSS, SQL injection, open redirects, sensitive file exposure, and missing security headers.
 
 ## Features
